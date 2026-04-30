@@ -1,0 +1,28 @@
+*carlos:jose,sebastian
+{montar bicicleta,rock,bailar,gatos,teatro}
+El 23/09/2018 14:37:26 jose escribió: Me alegro mucho, y como va el trabajo?
+El 23/09/2018 14:35:01 jose escribió: Hola Carlos, como estás?
+
+*jose:carlos,juan,marcelo
+{meditar,rock,perros,robótica,películas románticas}
+El 23/09/2018 14:38:20 carlos escribió: Muy ocupado, pero bien...
+El 23/09/2018 14:36:10 carlos escribió: Bien Jose, y como vas tu?...
+
+*juan:jose,<mario>
+{rock,teatro,perros,gatos,mar}
+
+*marcelo:jose,camilo,<andres;sandra>
+{bailar,jardinería,ver series,teatro,meditar}
+
+*camilo:marcelo
+{películas acción,vallenato}
+
+*sebastian:carlos
+{caminar}
+
+*mario:
+
+*andres:
+{pop,ver series}
+
+*sandra:
