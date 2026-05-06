@@ -64,7 +64,6 @@ def cargar_datos_red():
             for linea in f:
                 limpia = limpiar_linea(linea)
                 if inicia_con(limpia, "*"):
-                    # Procesar *nombre:amigos,<solicitudes>
                     contenido = limpia[1:]
                     partes = separar_texto(contenido, ":")
                     u_actual = partes[0]
