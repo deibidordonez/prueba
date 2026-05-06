@@ -30,16 +30,78 @@ def menu_sesion(usuario, cred, red):
         elif opc == 2:
             destino = input("Destinatario: ")
             # Restricciones de la práctica[cite: 2]
-            if destino not in red: print("No existe.")
-            elif destino == usuario: print("No puedes enviarte a ti mismo.")
-            elif destino in red[usuario]["amigos"]: print("Ya son amigos.")
-            elif usuario in red[destino]["solicitudes"]: print("Ya enviada.")
+            if destino not in red:
+                print("No existe.")
+            elif destino == usuario: 
+                print("No puedes enviarte a ti mismo.")
+            elif destino in red[usuario]["amigos"]: 
+                print("Ya son amigos.")
+            elif usuario in red[destino]["solicitudes"]: 
+                print("Ya enviada.")
             else:
                 red[destino]["solicitudes"].append(usuario)
                 print("Solicitud enviada.")
+        elif opc==3:
+            print("Tienes solicitudes de:")
+            con=1
+            c=False
+            for i in red[usuario]["solicitudes"]:
+                c=True
+                print(f"{con}. {i}")
+                con= con + 1
+            if c == True:
+                acep=input("¿Desea aceptar alguna solicitud?: ")
+                if acep == "si":
+                    acep=input("Ingrese el nombre del usuario: ")
+                    red[usuario]["solicitudes"].remove(acep)
+                    red[usuario]["amigos"].append(acep)
+                    red[acep]["amigos"].append(usuario)
+                    print("Amigo agregado")
+                elif acep =="Si":
+                    acep=input("Ingrese el nombre del usuario: ")
+                    red[usuario]["solicitudes"].remove(acep)
+                    red[usuario]["amigos"].append(acep)
+                    red[acep]["amigos"].append(usuario)
+                    print("Amigo agregado")
+                elif acep == "no":
+                    acep=input("¿Desea eliminar las solicitudes?: ")
+                    if acep == "si":
+                        for i in red[usuario]["solicitudes"]:
+                                red[usuario]["solicitudes"].remove(i)
+                    elif acep == "Si":
+                        for i in red[usuario]["solicitudes"]:
+                                red[usuario]["solicitudes"].remove(i)
+                elif acep == "No":
+                    acep=input("¿Desea eliminar las solicitudes?: ")
+                if acep == "si":
+                        for i in red[usuario]["solicitudes"]:
+                            red[usuario]["solicitudes"].remove(i)
+                elif acep == "Si":
+                        for i in red[usuario]["solicitudes"]:
+                            red[usuario]["solicitudes"].remove(i)
+            else:
+                print("No tienes solicitudes de amistad")
+                
         elif opc == 4:
             # Los más recientes primero[cite: 1, 2]
             for m in red[usuario]["mensajes"]: print(m)
+        elif opc == 5:
+            destinatario=input("¿A quien desea enviarle el mensaje?: ")
+            mns=f"El {datetime} {usuario} escribio: "
+            """
+            añadir fecha y hora en mns
+            """
+            mns+=(input("Ingrese mensaje a enviar: "))
+            if destinatario not in red:
+                print("El usuario a enviar el mensaje no existe")
+            elif destinatario == usuario:
+                print("No te puedes enviar mensajes a ti mismo")
+            elif destinatario not in red[usuario]["amigos"]:
+                print("No puedes enviarles mensajes a personas que no estan entre tus amigos")
+            else:
+                red[destinatario]["mensajes"].append(mns)
+                print("Mensaje enviado correctamente")
+
         elif opc == 6:
             break
         db.guardar_todo(cred, red)
