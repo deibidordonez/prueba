@@ -95,7 +95,7 @@ def cargar_datos_red():
 
 def guardar_todo(cred, red):
     """
-    Persistencia total en archivos de texto.
+    Guarda los cambios realizados e incluye nuevos usuarios, claves, mensajes, etc.
     """
     # Guardar users.txt
     with open("users.txt", "w", encoding="utf-8") as f:
