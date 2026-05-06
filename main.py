@@ -26,9 +26,10 @@ def menu_sesion(usuario, cred, red):
         print("4. Ver mensajes")
         print("5. Enviar mensaje")
         print("6. Ver amigos")
-        print("7. Cerrar sesión")
+        print("7. Añadir intereses")
+        print("8. Cerrar sesión")
         
-        opc = validar_opcion(1, 6)
+        opc = validar_opcion(1, 8)
         #%% modulo de opciones del menu del usuario
         if opc == 1:
             for u in red: print("-", u)
@@ -107,6 +108,13 @@ def menu_sesion(usuario, cred, red):
                 n+=1
 
         elif opc == 7:
+            ax = "si"
+            while ax=="si":
+                interes=input("ingrese sus intereses: ")
+                red[usuario]["intereses"].append(interes)
+                ax=input("¿Desea ingresar mas interese? (si/no): ")
+
+        elif opc == 8:
             break
         db.guardar_todo(cred, red)
         #%%<Fin>
