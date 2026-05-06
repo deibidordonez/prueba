@@ -87,7 +87,7 @@ def menu_sesion(usuario, cred, red):
             for m in red[usuario]["mensajes"]: print(m)
         elif opc == 5:
             destinatario=input("¿A quien desea enviarle el mensaje?: ")
-            fecha_formateada = datetime.datetime.now().strftime("%d/%m/%Y %H:%M")
+            fecha_formateada = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
             mns = f"El {fecha_formateada} {usuario} escribio: "
             """
             añadir fecha y hora en mns
