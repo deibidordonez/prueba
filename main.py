@@ -109,7 +109,7 @@ def menu_sesion(usuario, cred, red):
 
         elif opc == 7:
             ax = "si"
-            while ax=="si":
+            while ax=="si" or ax=="Si" or ax=="sI" or ax=="SI":
                 interes=input("ingrese sus intereses: ")
                 red[usuario]["intereses"].append(interes)
                 ax=input("¿Desea ingresar mas interese? (si/no): ")
