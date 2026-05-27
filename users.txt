@@ -1,9 +1,0 @@
-carlos;unodostres
-jose;unodostres
-sebastian;unodostres
-juan;unodostres
-marcelo;unodostres
-mario;unodostres
-camilo;unodostres
-andres;unodostres
-sandra;unodostres
