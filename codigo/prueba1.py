@@ -17,27 +17,27 @@ def cargar_datos(nombre):
         notas.append(fila)
     return cursos, estudiantes, notas
 cursos, estudiantes, notas=cargar_datos("notas_estudiantes.csv")
-"""
+
 print(cursos)
 print("="*100)
 print(estudiantes)
 print("="*100)
 print(notas)
 print("="*100)
-"""
+
 def eliminar_estudiante(notas, estudiantes):
     print("Documentos estudiantes:", estudiantes)
     doc=int(input("\n Digite el numero del documento del estudiante que quiere eliminar: "))
-    l=0
+    li=0
     for i in estudiantes:
         if i == doc:
             estudiantes.remove(doc)
-            sup=notas[l]
+            sup=notas[li]
             notas.remove(sup)
-        l+=1
+        li+=1
     return estudiantes,notas
-#estudiantes, notas=eliminar_estudiante(notas, estudiantes)
-#print(estudiantes, notas)
+estudiantes, notas=eliminar_estudiante(notas, estudiantes)
+print(estudiantes, notas)
 
 def buscar(doc, estudiantes):
     for i in range(len(estudiantes)):
@@ -59,3 +59,37 @@ def mayor_nota(doc, estudiantes, cursos, notas):
     return max_n, max_c
 m = mayor_nota(1024351175, estudiantes, cursos, notas)
 print("mayor nota: ", m)
+def promedio(notas_est):
+    suma = 0
+    count=0
+    for n in notas_est:
+        if n >= 0:
+            suma += n
+            count += 1
+        if count == 0:
+            return 0
+    return suma/count
+def burbble_sort(idx, promedio):
+    n = len(idx)
+    for i in range (n-1):
+        for j in range (n-1-i):
+            if promedio[idx[j]]<promedio[idx[j+1]]:
+                idx[j],idx[j+1]=idx[j+1],idx[j]
+def selection_sort(idx, cantidad_cursos):
+    n = len(idx)
+    for i in range(n - 1):
+        max_pos = i
+        for j in range(i + 1, n):
+            if cantidad_cursos[idx[j]] > cantidad_cursos[idx[max_pos]]:
+                max_pos = j
+            if max_pos != i:
+                idx[i], idx[max_pos] = idx[max_pos], idx[i]
+prom_notas=[]
+for i in range(len(notas)):
+    prom_notas.append(promedio(notas(i)))
+idx=[]
+count=0
+for i in range(len(estudiantes)):
+    idx.append(count)
+    count+=1
+print(burbble_sort(idx, prom_notas))
